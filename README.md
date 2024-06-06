@@ -4,6 +4,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
+Run a migration to create your database tables with Prisma Migrate
+
+```shell
+npx prisma migrate dev --name init
+```
+
 ```bash
 npm run dev
 # or
@@ -34,3 +40,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+List API
+
+| # | HTTP METHOD | PATH            | DESCRIPTION    |
+|---|-------------|-----------------|----------------|
+| 1 | POST        | /api/posts      | Add New Post   |
+| 2 | GET         | /api/posts      | Get all Posts  |
+| 3 | GET         | /api/posts/{id} | Get Post By ID |
+| 4 | PATCH       | /api/posts/{id} | Update Post    |
+| 5 | DELETE      | /api/posts/{id} | Delete a Post  |
