@@ -19,7 +19,7 @@ export async function GET(request, {params}) {
         //return response JSON
         return NextResponse.json(
             {
-                sucess: true,
+                success: true,
                 message: "Detail Data Post Not Found!",
                 data: null,
             },
@@ -32,8 +32,40 @@ export async function GET(request, {params}) {
     //return response JSON
     return NextResponse.json(
         {
-            sucess: true,
+            success: true,
             message: "Detail Data Post",
+            data: post,
+        },
+        {
+            status: 200,
+        }
+    );
+}
+
+export async function PATCH(request, {params}) {
+    //get params id
+    const id = parseInt(params.id);
+
+    //get request data
+    const {title, content} = await request.json();
+
+    //update data
+    const post = await prisma.post.update({
+        where: {
+            id,
+        },
+        data: {
+            title: title,
+            content: content,
+            updatedAt: new Date(),
+        },
+    });
+
+    //return response JSON
+    return NextResponse.json(
+        {
+            success: true,
+            message: "Data Post Updated!",
             data: post,
         },
         {
